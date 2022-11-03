@@ -1,21 +1,11 @@
 package main
 
 import (
-	"bytes"
-	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
 )
-
-func PrettyString(str string) (string, error) {
-	var prettyJSON bytes.Buffer
-	if err := json.Indent(&prettyJSON, []byte(str), "", "    "); err != nil {
-		return "", err
-	}
-	return prettyJSON.String(), nil
-}
 
 func logHttpRequest(req *http.Request) {
 	log.Println(fmt.Sprintf("Method: \"%v\", URI: \"%v\", User-Agent: \"%v\"", req.Method, req.URL.String(), req.Header.Get("User-Agent")))
