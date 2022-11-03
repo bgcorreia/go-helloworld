@@ -36,6 +36,8 @@ COPY --from=build /app/b3o /server
 
 COPY --from=build /etc/passwd /etc/passwd
 
+ENV PORT=8080
+
 USER b3o
 
 ENTRYPOINT ["/server"]
