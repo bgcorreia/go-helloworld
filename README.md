@@ -40,9 +40,9 @@ docker build -t b3o/hello-world .
 
 ```shell
 docker run \
-    -p 8080:8080 \
-    -e PORT=8080 \
-    -e LOCATION=GOOGLE-CLOUD
+    -p 8080:<CONTAINER-LISTEN-PORT> \
+    -e PORT=<CONTAINER-LISTEN-PORT> \
+    -e LOCATION=<CLOUD-NAME> \
     b3o/hello-world
 ```
 
