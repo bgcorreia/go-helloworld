@@ -19,6 +19,9 @@ spec:
       containers:
       - image: bcorreia/go-helloworld:v0.0.2 # {"$imagepolicy": "flux-system:b3o-tcc"}
         name: go-helloworld
+        env:
+        - name: LOCATION
+          value: "AZURE-CLOUD"
         # resources:
         #   requests:
         #     cpu: "0.5"

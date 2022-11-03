@@ -5,6 +5,7 @@ metadata:
   name: b3o-tcc-ingress
   namespace: b3o
 spec:
+  ingressClassName: nginx
   rules:
   - host: azure.tcc.brunocorreia.me
     http:
