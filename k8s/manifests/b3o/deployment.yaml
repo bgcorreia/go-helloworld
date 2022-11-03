@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: b3o-tcc
+  name: b3o-tcc
+  namespace: b3o
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: b3o-tcc
+  # strategy:
+  template:
+    metadata:
+      labels:
+        app: b3o-tcc
+    spec:
+      containers:
+      - image: bcorreia/go-helloworld:5cbf63f
+        name: go-helloworld
+        # resources:
+        #   requests:
+        #     cpu: "0.5"
+        #     memory: "50Mi"
