@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: b3o-tcc
-  name: b3o-tcc
+  name: b3o-tcc-deployment
   namespace: b3o
 spec:
   replicas: 3
