@@ -17,7 +17,7 @@ spec:
         app: b3o-tcc
     spec:
       containers:
-      - image: bcorreia/go-helloworld:5cbf63f
+      - image: bcorreia/go-helloworld:5cbf63f # {"$imagepolicy": "flux-system:b3o-tcc"}
         name: go-helloworld
         # resources:
         #   requests:
