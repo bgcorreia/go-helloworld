@@ -14,7 +14,9 @@ func logHttpRequest(req *http.Request) {
 func root(w http.ResponseWriter, req *http.Request) {
 	logHttpRequest(req)
 	location := os.Getenv("LOCATION")
-	jsonData := []byte(fmt.Sprintf(`{"info": "Welcome on the Go program from TCC's Bruno","location": "%v"}`, location))
+	imageVersion := os.Getenv("IMAGE_VERSION")
+	name := os.Getenv("POD_NAME")
+	jsonData := []byte(fmt.Sprintf(`{"info": "Welcome on the Go program from Bruno's TCC", "name": "%v", "location": "%v", "imageVersion": "%v"}`, name, location, imageVersion))
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
