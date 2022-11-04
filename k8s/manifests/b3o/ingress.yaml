@@ -4,7 +4,7 @@ metadata:
   name: b3o-tcc-ingress
   namespace: b3o
   annotations:
-    cert-manager.io/issuer: "letsencrypt-prod"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   ingressClassName: nginx
   tls:
