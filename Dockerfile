@@ -38,6 +38,9 @@ COPY --from=build /etc/passwd /etc/passwd
 
 ENV PORT=8080
 
+ARG IMAGE_VERSION
+ENV IMAGE_VERSION=$IMAGE_VERSION
+
 USER b3o
 
 ENTRYPOINT ["/server"]
