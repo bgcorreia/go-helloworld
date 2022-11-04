@@ -21,7 +21,7 @@ spec:
         app: b3o-tcc
     spec:
       containers:
-      - image: bcorreia/go-helloworld:v0.0.2 # {"$imagepolicy": "flux-system:b3o-tcc"}
+      - image: bcorreia/go-helloworld:v0.0.3 # {"$imagepolicy": "flux-system:b3o-tcc"}
         name: go-helloworld
         env:
         - name: LOCATION
