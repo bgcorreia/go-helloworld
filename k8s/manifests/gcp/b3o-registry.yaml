@@ -1,0 +1,10 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: b3o-tcc
+  namespace: flux-system
+spec:
+  image: bcorreia/go-helloworld
+  interval: 1m0s
+
