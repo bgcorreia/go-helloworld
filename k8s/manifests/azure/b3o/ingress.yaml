@@ -11,6 +11,9 @@ spec:
   - hosts:
     - azure.tcc.brunocorreia.me
     secretName: tcc-tls-secret
+  - hosts:
+    - tcc.brunocorreia.me
+    secretName: tcc-root-tls-secret
   rules:
   - host: azure.tcc.brunocorreia.me
     http:

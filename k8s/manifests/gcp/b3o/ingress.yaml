@@ -11,6 +11,9 @@ spec:
   - hosts:
     - gcp.tcc.brunocorreia.me
     secretName: tcc-tls-secret
+  - hosts:
+    - tcc.brunocorreia.me
+    secretName: tcc-root-tls-secret
   rules:
   - host: gcp.tcc.brunocorreia.me
     http:
