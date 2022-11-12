@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: b3o-tcc-ingress
+  namespace: b3o
+  # annotations:
+  #   cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - azure.tcc.brunocorreia.me
+    secretName: tcc-tls-secret
+  rules:
+  - host: gcp.tcc.brunocorreia.me
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: b3o-tcc-service
+            port:
+              number: 80
