@@ -3,10 +3,10 @@ kind: Ingress
 metadata:
   name: b3o-tcc-ingress
   namespace: b3o
-  # annotations:
-  #   cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  annotations:
+    kubernetes.io/ingress.class: nginx
 spec:
-  ingressClassName: nginx
+  # ingressClassName: nginx
   tls:
   - hosts:
     - azure.tcc.brunocorreia.me
