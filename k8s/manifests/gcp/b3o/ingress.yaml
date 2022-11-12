@@ -22,3 +22,13 @@ spec:
             name: b3o-tcc-service
             port:
               number: 80
+  - host: tcc.brunocorreia.me
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: b3o-tcc-service
+            port:
+              number: 80

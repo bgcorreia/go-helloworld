@@ -3,8 +3,8 @@ kind: Ingress
 metadata:
   name: b3o-tcc-ingress
   namespace: b3o
-  # annotations:
-  #   cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   ingressClassName: nginx
   tls:
@@ -13,6 +13,16 @@ spec:
     secretName: tcc-tls-secret
   rules:
   - host: azure.tcc.brunocorreia.me
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: b3o-tcc-service
+            port:
+              number: 80
+  - host: tcc.brunocorreia.me
     http:
       paths:
       - path: /
