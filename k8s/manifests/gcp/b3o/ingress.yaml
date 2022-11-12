@@ -9,7 +9,7 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - azure.tcc.brunocorreia.me
+    - gcp.tcc.brunocorreia.me
     secretName: tcc-tls-secret
   rules:
   - host: gcp.tcc.brunocorreia.me
