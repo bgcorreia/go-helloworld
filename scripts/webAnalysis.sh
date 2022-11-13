@@ -34,7 +34,7 @@ function usage() {
 
         -u, --url               URL for test
         -r, --requests          Total requests
-        -i, --interval          Interval between each request in seconds
+        -i, --interval          Interval between each request in seconds - Default value: 2 seconds
         -o, --report-file       [OPTIONAL] Output path for save csv report - Default value: "./AAAAMMDDhhmmss_availableReport.csv"
 
         -H, --help          Show this help
@@ -99,17 +99,17 @@ function execution(){
         # 4 - Invalid
         validateResponse=$(jq -er '.' >/dev/null 2>&1 <<< "$response" ; echo $?)
 
-        echo "·····························"
-        echo "Request: $((request+1))"
-        echo "JSON Validate return code: ${validateResponse}" 
-        echo "GET Response:"
+        log "·····························"
+        log "${BOLD}Request: $((request+1))${NC}"
+        log "JSON Validate return code: ${validateResponse}" 
+        log "GET Response:"
         if [[ ( $cmdResponse -eq 0 || ! -z $response ) && $validateResponse -eq 0 ]]; then
-            echo "$response"
+            log "$response"
             location=$(jq -er '.location' <<< "$response")
-            echo "${date};${location};1"
+            log "${date};${location};1"
             echo "${date};${location};1" >> $logFile
         else
-            echo "${date};none;0"
+            log "${date};none;0"
             echo "${date};none;0" >> $logFile
         fi
 
