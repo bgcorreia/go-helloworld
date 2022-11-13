@@ -24,6 +24,7 @@ declare -r GREEN="\033[1;32m"
 declare -r YELLOW="\033[1;33m"
 declare -r NC="\033[0m"
 declare -r NOW=$(date +"%Y%m%d%H%M%S")
+SECONDS=0
 
 function usage() {
     cat <<EOF
@@ -35,6 +36,7 @@ function usage() {
         -u, --url               URL for test
         -r, --requests          Total requests
         -i, --interval          Interval between each request in seconds - Default value: 2 seconds
+        -t, --timeout           Time wait by response in seconds - Default value: 2 seconds
         -o, --report-file       [OPTIONAL] Output path for save csv report - Default value: "./AAAAMMDDhhmmss_availableReport.csv"
 
         -H, --help          Show this help
@@ -82,15 +84,16 @@ function execution(){
     local url=$1
     local totalRequests=$2
     local interval=$3
-    local logFile=$4
+    local timeout=$4
+    local logFile=$5
 
     > $logFile
     echo "time;location;status" >> $logFile
 
     local request=0
     while [ $request -lt $totalRequests ]; do
-        date=$(date '+%Y-%m-%d %H:%M:%S')
-        response=$(curl --connect-timeout 1 --max-time 1 $url -s)
+        date=$SECONDS
+        response=$(curl --connect-timeout $timeout --max-time $timeout $url -s)
         cmdResponse=$?
 
         # Return's code:
@@ -123,6 +126,7 @@ function main() {
     local url
     local totalRequests
     local interval
+    local timeout
     local logFile
 
     while test -n "${1}"; do
@@ -138,6 +142,10 @@ function main() {
             -i|--interval)
                 parameter-check "-i" "${2}"
                 interval="${2}"
+                ;;
+            -t|--timeout)
+                parameter-check "-t" "${2}"
+                timeout="${2}"
                 ;;
             -o|--report-file)
                 parameter-check "-r" "${2}"
@@ -176,11 +184,15 @@ function main() {
         interval=2
     fi
 
+    if [ -z ${timeout} ]; then
+        timeout=2
+    fi
+
     if [ -z ${logFile} ]; then
         logFile="./${NOW}_availableReport.csv"
     fi
     
-    execution "${url}" "${totalRequests}" "${interval}" "${logFile}"
+    execution "${url}" "${totalRequests}" "${interval}" "${timeout}" "${logFile}"
 }
 
 main ${@}
