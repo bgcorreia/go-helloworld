@@ -12,7 +12,7 @@ spec:
     commit:
       author:
         email: fluxcdbot@users.noreply.github.com
-        name: fluxcdbot
+        name: fluxcdbot-gcp
       messageTemplate: '{{range .Updated.Images}}{{println .}}{{end}}'
     push:
       branch: main
